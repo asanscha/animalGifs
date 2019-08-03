@@ -2,7 +2,7 @@ $(function(){
    populateButtons(searchAnimals, 'searchButton', '#buttonsSection'); 
 })
 
-var searchAnimals = ['Dog', 'Cat', 'Bird'];
+var searchAnimals = ['Dog', 'Cat', 'Bird', 'Monkey', 'Ape', 'Horse', 'Lizard', 'Fish', 'Shark', 'Whale', 'Snake', 'Frog', 'Turtle', 'Rabbit', 'Goat', 'Llama', 'Cow', 'Bull', 'Tiger', 'Lion', 'Puma', 'Alligator', 'Crab', 'Octopus','Squid'];
 
 function populateButtons(searchAnimals, classToAdd, areaToAddTo) {
     $(areaToAddTo).empty();
@@ -42,3 +42,23 @@ $(document).on('click', '.searchButton', function(){
             }
         })
 })
+
+$(document).on('click', '.searchImage', function() {
+    var state = $(this).attr('data-state');
+    if(state == 'still'){
+        $(this).attr('src', $(this).data('animated'));
+        $(this).attr('data-state', 'animated');
+    }  else {
+        $(this).attr('src', $(this).data('still'));
+        $(this).attr('data-state', 'still');
+    }
+})
+
+$('#addSearch').on('click', function() {
+    var newSearch = $('input').eq(0).val();
+    searchAnimals.push(newSearch);
+    populateButtons(searchAnimals, 'searchButton', '#buttonsSection');
+    return false;
+})
+
+
